@@ -1,0 +1,35 @@
+{
+  "short_name": "AI Summarizer",
+  "name": "AI Summarizer",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action" : {
+    "default_popup": "index.html",
+    "default_title": "AI extension"
+  },
+  "permissions": [
+    "activeTab", 
+    "contextMenus" , 
+    "storage",
+    "scripting",
+    "notifications"
+  ],
+
+  "host_permissions": [
+    "http://192.168.1.11:8000/*"
+  ], 
+ 
+  "icons": {
+    "16": "logo192.png",
+    "48": "logo192.png",
+    "128": "logo192.png"
+  },
+
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff" ,
+  "background" : {  
+    "service_worker": "background.js"
+  }
+}
