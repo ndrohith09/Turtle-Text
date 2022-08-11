@@ -1,6 +1,6 @@
 # Turtle-Text
 
-[![ChakraUI](https://img.shields.io/static/v1?label=builtwith&message=Chakra&color=purple)]()
+[![ReactJS](https://img.shields.io/static/v1?label=builtwith&message=ReactJS&color=purple)]()
 [![npm](https://img.shields.io/static/v1?label=npm&message=8.11.0&color=red)]()
 [![yarn](https://img.shields.io/static/v1?label=yarn&message=1.22.19&color=blue)]() 
 [![chakra ui](https://img.shields.io/static/v1?label=chakraui&message=2.2.3&color=orange)]()
