@@ -21,9 +21,12 @@ import {
 } from '@chakra-ui/react'; 
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 import { useMediaQuery } from '@chakra-ui/react';
-export const Nav = () => {
-    const iconColor = useColorModeValue('#2A2238', 'white');
+import { useAuth0 } from '@auth0/auth0-react';
 
+export const Nav = () => {
+    const { user, logout , loginWithRedirect} = useAuth0();
+    
+    const iconColor = useColorModeValue('#2A2238', 'white');
     const [isTablet] = useMediaQuery('(max-width: 768px)');
 
     const menuStyle = {
@@ -99,6 +102,41 @@ export const Nav = () => {
                             Chrome Extension
                         </LinkOverlay>
                     </Button>
+
+                    {user === undefined ? 
+                    null
+                    :
+                    <Button color="current" 
+                    // leftIcon={<Github color={iconColor} height="14" width="14" />} 
+                        mr="5">
+                        <LinkOverlay 
+                        isExternal  
+                        >
+                            Hello {user.name}
+                        </LinkOverlay>
+                    </Button>
+                    }
+                    
+                    {user === undefined ? 
+                    <Button color="current" leftIcon={<Github color={iconColor} height="14" width="14" />} mr="5">
+                    <LinkOverlay 
+                    isExternal 
+                    onClick={() => loginWithRedirect()} 
+                    >
+                        Login
+                    </LinkOverlay>
+                </Button>
+                    :
+                    <Button color="current" leftIcon={<Github color={iconColor} height="14" width="14" />} mr="5">
+                        <LinkOverlay 
+                        isExternal  
+                        onClick={() => logout()}
+                        >
+                            Logout
+                        </LinkOverlay>
+                    </Button>
+}
+                    
                 </Box>
             )}
             <ColorModeSwitcher mr="5" justifySelf="flex-end" />

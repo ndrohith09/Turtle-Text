@@ -6,12 +6,20 @@ import {
     Container , Heading , useMediaQuery
 } from '@chakra-ui/react'; 
 import Footer from './footer';
+import { useAuth0 } from '@auth0/auth0-react';
+
 export const Home = () => {
     const [isMobile] = useMediaQuery("(max-width: 425px)") 
+    const { user} = useAuth0();
 
-        return ( 
-            <> 
-            <Hero />
+        return (
+             
+            <>
+            {user === undefined ? 
+       null 
+       : 
+       <> 
+       <Hero />
             <Summarizer />
             <Container maxW="container.xl" centerContent mt={isMobile ? "1" : "10"}>
             <Heading fontFamily="system-ui" size={isMobile ? "lg" : "xl"}>
@@ -20,6 +28,9 @@ export const Home = () => {
           </Container>
             <Eloborator />
             <Footer />
+       </>
+       } 
+            
             </>
         );
     

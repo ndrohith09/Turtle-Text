@@ -57,7 +57,7 @@ class Eloborator extends Component {
         console.log(this.state.text);
         await axios({
           method: 'post',
-          url: 'http://192.168.1.11:8000/generate?txt=' + this.state.text,
+          url: 'http://159.89.162.252/generate?txt=' + this.state.text,
           headers: {
             'Content-Type': 'application/json',
           },
