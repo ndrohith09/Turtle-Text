@@ -52,7 +52,7 @@ class Summarizer extends Component {
     console.log(this.state.url);
     await axios({
       method: 'post',
-      url: 'http://192.168.1.11:8000/predict?url=' + this.state.url,
+      url: 'http://localhost:8000/predict?url=' + this.state.url,
       headers: {
         'Content-Type': 'application/json',
       },

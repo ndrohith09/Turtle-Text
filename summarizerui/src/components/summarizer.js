@@ -38,6 +38,7 @@ class Summarizer extends Component {
       isLoading: false,
       visible: false,
       copyAlert : false , 
+      mobile : '',
     };
   }
 
@@ -85,6 +86,25 @@ class Summarizer extends Component {
       });
   };
 
+  twilio = async(e) => {  
+    e.preventDefault();
+    await axios({ 
+    method: 'post', 
+    url  : `http://0.0.0.0:8000/twilio/?final_text=${this.state.text}&mobile=${this.state.number}`, 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    })
+    .then(res => {
+      console.log(res); 
+      window.alert("Message Sent Successfully");
+    })
+    .catch(error => {
+      console.log(error); 
+    });
+    
+    }
+ 
   render() {
     const searchInput = useRef < HTMLInputElement > null;
 
@@ -169,6 +189,27 @@ class Summarizer extends Component {
               >
                 Copy
               </Button>
+
+              <br />
+              <br />
+
+              <Input                
+                name="text"
+                id="text"
+                onChange={e => this.setState({ mobile: e.target.value })}
+                placeholder="Enter the mobile number to share"
+              />
+              <br />
+              <br />
+              <Button 
+                size="sm"
+                variant="solid"
+                colorScheme="telegram"
+                onClick={this.twilio}
+              >
+                Share
+              </Button>
+
             </Box>
           </Box>
         ) : (

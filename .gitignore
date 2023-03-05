@@ -47,3 +47,7 @@ summarizerui/npm-debug.log*
 summarizerui/yarn-debug.log*
 summarizerui/yarn-error.log*
 
+summarizerui-copy/
+summarizerui/.env
+b336fa0b874ea92e3e22f07a7e6f8fa9da01221759c33abeb2679d6d98fe7755.585965cf7e82e4536033cd21d76c486af3d6b1c2a34b3a847840d4e7fe9d8844
+offline_model.py

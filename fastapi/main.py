@@ -5,6 +5,7 @@ from transformers import pipeline
 from youtube_transcript_api import YouTubeTranscriptApi 
 from bs4 import BeautifulSoup
 import requests
+from twilio.rest import Client
 
 app = FastAPI() 
 
@@ -21,7 +22,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+ 
 summarizer = pipeline("summarization")
 generator = pipeline('text-generation', model = 'gpt2')
 
@@ -120,6 +121,19 @@ async def predict(
         "summarized_text": summary
     }
 
+@app.post("/twilio")
+async def twilio(final_text: str , mobile : str): 
+    print(final_text, mobile) 
+    account_sid = "*****"
+    auth_token = "*****"
+    client = Client(account_sid, auth_token)
+    message = client.messages.create(
+    body="The AI generated text is " + final_text,
+    from_='*****',
+    to='+91'+mobile
+    )
+    print(message.sid)
+    return {"message": "Message sent successfully"}
 
 
 if __name__ == "__main__":
