@@ -38,7 +38,7 @@ const Footer = () => {
         </Text>
         <Spacer />
         <Text fontSize='sm' color={textColor}>
-       Open Source | Released under MIT License | Copyright @ 2022
+       Open Source | Released under MIT License | Copyright @ 2023
         </Text>
         </Flex>
         </Container>
